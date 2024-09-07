@@ -1,7 +1,7 @@
 # Image
 
+## Adaptive Filter
 
-The image describes the behavior of the **adaptive local noise reduction filter**  based on the variance of the noise ($$\sigma_n^2$$) and the local variance ($$\sigma_L^2$$) in the image region $$S_{xy}$$.
 ### Explanation of Terms: 
  
 - **$f(x, y)$** : The original pixel value at location $$(x, y)$$.
@@ -80,13 +80,7 @@ The symbol $$\hat{f}(x, y)$$ in the context of the **adaptive local noise reduct
 - The symbol $$\hat{f}(x, y)$$ represents the **filtered result** , meaning that the pixel value has been modified to account for the noise level in the surrounding area (neighborhood).
 Thus, $$\hat{f}(x, y)$$ is the **final pixel value**  after the adaptive noise reduction filter has processed the image, adjusted based on local noise characteristics.
 
-You: 
 
-![Uploaded image](https://files.oaiusercontent.com/file-Ggk6QT1MlqgPkUxqlcLdFtRP?se=2024-09-07T15%3A55%3A52Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D299%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Dimage.png&sig=uApdYRK8Z/kX7t0svazVWmhAt5L8w2BTrfgPI69B/Uc%3D)
-
-ChatGPT: 
-
-The image presents the **mathematical expression**  of the **adaptive local noise reduction filter**  and explains how the filter works to reduce noise while preserving important image features.
 ### Expression of the Adaptive Local Noise Reduction Filter: 
 $$
  \hat{f}(x, y) = g(x, y) - \frac{\sigma_n^2}{\sigma_L^2} [g(x, y) - m_L] 
