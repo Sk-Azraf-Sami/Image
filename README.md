@@ -134,3 +134,37 @@ Where:
   - **In regions with low variance**  (flat areas affected by noise), the filter smooths the pixel values by adjusting them towards the local mean.
 
 - The image also explains how to handle cases where the local variance is smaller than the noise variance, either by setting it to the noise variance or by allowing negative values and rescaling.
+
+## Adaptive Median Filter 
+The image you provided shows the algorithm for **adaptive median filtering**  with two key decision levels (A and B) to process each pixel in a subimage, denoted $$S_{xy}$$, with a growing window size. Here's how the algorithm works:**Steps of the Adaptive Median Filter Algorithm** :**Level 0** : 
+- Set the initial window size for the subimage $$S_{xy}$$ centered at a pixel at position $$(x, y)$$. Start with a small window (e.g., 3x3).
+**Level 1** : 
+- Calculate three values for the subimage: 
+  - $$Z_{\min}$$: Minimum pixel value in the window
+ 
+  - $$Z_{\max}$$: Maximum pixel value in the window
+ 
+  - $$Z_{\text{med}}$$: Median pixel value in the window
+**Level A** : 
+1. **Check the condition** :
+$$
+ Z_{\min} < Z_{\text{med}} < Z_{\max} 
+$$
+ 
+  - If true, move to **Level B**  (indicated by the green box).
+ 
+  - If false, increase the window size (if within the maximum allowable window size $$S_{\max}$$) and repeat **Level 1** . If the window reaches $$S_{\max}$$ and the condition is still false, output $$Z_{\text{med}}$$.
+**Level B** : 
+1. **Check the condition** :
+$$
+ Z_{\min} < Z_{xy} < Z_{\max} 
+$$
+ 
+  - If true, output the pixel value $$Z_{xy}$$ (the original value at the center of the window).
+ 
+  - If false, output the median value $$Z_{\text{med}}$$.
+**Summary** : 
+- The goal of **adaptive median filtering**  is to remove impulse noise (salt-and-pepper noise) while preserving edges.
+
+- The algorithm adjusts the window size dynamically to adapt to local features of the image. It prevents noise from dominating the process by carefully comparing the median and pixel values at each step.
+
